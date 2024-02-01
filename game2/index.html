@@ -17,18 +17,18 @@
     <div id="word"></div>
     <div id="wrong"></div>
     <script>
-        var words = ['apple', 'banana', 'cherry'];
-        var word = words[Math.floor(Math.random() * words.length)];
-        var answerArray = Array(word.length).fill('_');
-        var wrongGuesses = [];
+        const words = ['apple', 'banana', 'cherry'];
+        let word = words[Math.floor(Math.random() * words.length)];
+        let answerArray = Array(word.length).fill('_');
+        let wrongGuesses = [];
 
         document.getElementById('word').innerHTML = answerArray.join(' ');
 
         window.addEventListener('keypress', function (e) {
-            var guess = String.fromCharCode(e.charCode);
-            var correctGuess = false;
+            let guess = String.fromCharCode(e.charCode);
+            let correctGuess = false;
 
-            for (var i = 0; i < word.length; i++) {
+            for (let i = 0; i < word.length; i++) {
                 if (word[i] === guess) {
                     answerArray[i] = guess;
                     correctGuess = true;
