@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <style>
+        #word span { 
+            display: inline-block; 
+            width: 20px; 
+            border-bottom: 1px solid #000; 
+        }
+        #wrong { color: red; }
+    </style>
+</head>
+<body>
+    <div id="word"></div>
+    <div id="wrong"></div>
+    <script>
+        var words = ['apple', 'banana', 'cherry'];
+        var word = words[Math.floor(Math.random() * words.length)];
+        var answerArray = Array(word.length).fill('_');
+        var wrongGuesses = [];
+
+        document.getElementById('word').innerHTML = answerArray.join(' ');
+
+        window.addEventListener('keypress', function (e) {
+            var guess = String.fromCharCode(e.charCode);
+            var correctGuess = false;
+
+            for (var i = 0; i < word.length; i++) {
+                if (word[i] === guess) {
+                    answerArray[i] = guess;
+                    correctGuess = true;
+                }
+            }
+
+            if (!correctGuess) {
+                wrongGuesses.push(guess);
+            }
+
+            document.getElementById('word').innerHTML = answerArray.join(' ');
+            document.getElementById('wrong').innerHTML = 'Wrong guesses: ' + wrongGuesses.join(', ');
+
+            if (answerArray.join('') === word) {
+                alert('You won!');
+                // Bug: The game doesn't reset after winning
+            }
+
+            if (wrongGuesses.length === 6) {
+                alert('You lost!');
+                // Bug: The game doesn't reset after losing
+            }
+        });
+    </script>
+</body>
+</html>
