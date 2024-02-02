@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Guess the Number</h1>
-    <p>Guess a number between 1 and 10:</p>
+    <p>Guess a number between 1 and 10: (choose 1 to find the bug)</p>
     <input id="guess" type="number" min="1" max="10">
     <button onclick="checkGuess()">Guess</button>
     <p id="message"></p>
@@ -34,8 +34,6 @@
             }
             popup.style.display = 'block';
             blur.style.display = 'block';
-            console.log( popup.style.display);
-            console.log(numberToGuess);
         }
     </script>
 </body>
